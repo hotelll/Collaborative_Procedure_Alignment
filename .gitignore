@@ -1,0 +1,6 @@
+train_logs/
+*.pyc
+Datasets/COIN-SV/frames
+Datasets/CSV/video_compressed
+Datasets/DIVING48-SV/video_compressed
+Datasets/Elastic-Matching-Simplified
