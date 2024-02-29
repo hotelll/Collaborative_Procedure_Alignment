@@ -1,0 +1,16 @@
+train_logs/
+*.pyc
+Datasets/COIN-SV/frames
+Datasets/CSV/video_compressed
+Datasets/DIVING48-SV/video_compressed
+Datasets/Elastic-Matching-Simplified
+pretrained_models/
+__pycache__/
+.vscode/
+Datasets/
+eval_logs/
+vis_results/
+whiteboard.py
+visualization.py
+sample_frames.py
+cal_param.py

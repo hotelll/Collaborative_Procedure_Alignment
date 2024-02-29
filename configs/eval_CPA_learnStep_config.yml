@@ -1,0 +1,43 @@
+TRAIN:
+  BATCH_SIZE: 16
+  DROPOUT: 0.0
+
+
+MODEL:
+  DIM_EMBEDDING: 128
+  ITERS: 4
+  TRANSFORMER: False
+  ALIGNMENT: False
+
+
+DATASET:
+  MODE: 'test'
+  LOAD_VIDEO: True
+
+#  CSV dataset
+  NAME: 'CSV'
+  ROOT: 'Datasets/CSV/video_compressed'
+  TXT_PATH: './Datasets/CSV/test_pairs.txt'
+  NUM_CLASS: 45
+
+#  COIN dataset
+  # NAME: 'COIN-SV'
+  # # TXT_PATH: './Datasets/COIN-SV/val_pairs.txt'
+  # ROOT: 'Datasets/COIN-SV/video_compressed'
+  # TXT_PATH: './Datasets/COIN-SV/test_pairs.txt'
+  # NUM_CLASS: 37
+
+#  Diving48 dataset;
+  # NAME: 'DIVING48-SV'
+  # ROOT: 'Datasets/DIVING48-SV/video_compressed'
+  # # TXT_PATH: '/Datasets/DIVING48-SV/val_pairs.txt'
+  # TXT_PATH: './Datasets/DIVING48-SV/test_pairs.txt'
+  # NUM_CLASS: 20
+
+
+  NUM_CLIP: 16
+  AUGMENT: False
+  SHUFFLE: True
+  NUM_WORKERS: 8
+
+
