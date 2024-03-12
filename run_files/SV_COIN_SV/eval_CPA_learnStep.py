@@ -24,48 +24,6 @@ import json
 from utils.dpm_decoder import *
 
 
-
-def length_LIS(sequence):
-    if sequence == []:
-        return 0
-    seq_length = len(sequence)
-    dp = [1] * seq_length
-    for i in range(seq_length):
-        for j in range(i):
-            if sequence[j] < sequence[i]:
-                dp[i] = max(dp[i], dp[j]+1)
-    return max(dp)
-
-
-def consist_number_of_pair():
-    label_bank_path = 'Datasets/CSV/label_bank.json'
-    label_bank = read_json(label_bank_path)
-
-    test_label_bank = {}
-    for key in label_bank:
-        if float(key) < 7:
-            test_label_bank[key] = label_bank[key]
-
-    pair_match_step = {}
-    for q_key in test_label_bank:
-        query_procedure = test_label_bank[q_key]
-
-        for c_key in test_label_bank:
-            query_procedure_copy = query_procedure.copy()
-            candidate_procedure = test_label_bank[c_key]
-            consist_step_id = []
-            for step in candidate_procedure:
-                if step in query_procedure_copy:
-                    step_id = query_procedure_copy.index(step)
-                    query_procedure_copy[step_id] = 'MASK'
-                    consist_step_id.append(step_id)
-
-            consist_step_num = length_LIS(consist_step_id)
-            key = '{}-{}'.format(q_key, c_key)
-            pair_match_step[key] = consist_step_num
-            
-    return pair_match_step
-
 def read_json(file_path):
         with open(file_path, 'r') as f:
             data = json.loads(f.read())
@@ -246,18 +204,19 @@ def parse_args():
     parser.add_argument('--dist', default='NormL2')
 
     args = parser.parse_args([
-        '--config', 'configs/eval_CPA_learnStep_config.yml',
+        '--config', 'configs/eval_CPA_learnStep_coin_config.yml',
         '--root_path', 'train_logs/csv_logs/CPA_learnStep',
         # '--model_path', 'train_logs/csv_logs/align_adaK/best_model.tar',
         # '--model_path', 'train_logs/csv_logs/learnStep_Transformer/save_models/epoch_37.tar',
         '--dist', 'adaK',
         '--start_epoch', '1'
     ])
-    
+
     return args
 
 
 if __name__ == "__main__":
+
     args = parse_args()
 
     cfg = get_cfg_defaults()

@@ -10,7 +10,7 @@ import time
 from configs.defaults import get_cfg_defaults
 from data.dataset import load_dataset
 from utils.logger import setup_logger
-from models.CPA_randomStep_model import CPA_randomStep
+from models.CPA_learnStep_model import CPA_learnStep
 from utils.preprocess import frames_preprocess
 from utils.loss import *
 from utils.dpm_decoder import *
@@ -18,11 +18,11 @@ from utils.tools import setup_seed
 
 
 def train():
-    model = CPA_randomStep( num_class=cfg.DATASET.NUM_CLASS,
+    model = CPA_learnStep(  num_class=cfg.DATASET.NUM_CLASS,
                             dim_size=cfg.MODEL.DIM_EMBEDDING,
                             num_clip=cfg.DATASET.NUM_CLIP,
                             pretrain=cfg.MODEL.PRETRAIN,
-                            dropout=cfg.TRAIN.DROPOUT ).to(device)
+                            dropout=cfg.TRAIN.DROPOUT  ).to(device)
     
     for name, param in model.named_parameters():
         print(name, param.nelement())
@@ -68,25 +68,27 @@ def train():
             labels2 = sample['labels2'].to(device, non_blocking=True)
             pair_labels = (labels1 == labels2).long()
             
-            pred1, pred2, frame2step_dist = model(frames1, frames2)
+            pred1, pred2, frame2step_dist, loss_step = model(frames1, frames2)
             
             loss_cls = compute_cls_loss(pred1, labels1) + compute_cls_loss(pred2, labels2)
             loss_align = frame2step_dist.mean()
+            loss_step = loss_step.mean()
             
             loss_cls = 0.5 * loss_cls
             loss_align = 0.5 * loss_align
             
-            loss = loss_cls + loss_align
+            loss = loss_cls + loss_align + loss_step
             
             if (iter + 1) % 10 == 0:
-                logger.info( 'Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}, Cls Loss: {:.4f}, Frame Loss: {:.4f}'.format(
+                logger.info( 'Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}, Cls Loss: {:.4f}, Frame Loss: {:.4f}, Step Loss: {:.4f}'.format(
                     epoch + 1, 
                     cfg.TRAIN.MAX_EPOCH, 
                     iter + 1, 
                     len(train_loader), 
                     loss.item(),
                     loss_cls.item(),
-                    loss_align.item()
+                    loss_align.item(),
+                    loss_step.item()
                 )
             )
             
@@ -143,7 +145,7 @@ def parse_args():
     parser.add_argument('--log_name', default='train_log', help='log name')
 
     args = parser.parse_args([
-        '--config', 'configs/train_CPA_randomStep_config.yml'
+        '--config', 'configs/train_CPA_learnStep_coin_config.yml'
     ])
     return args
 

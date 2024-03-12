@@ -12,20 +12,20 @@ MODEL:
 
 DATASET:
   MODE: 'test'
-  LOAD_VIDEO: True
 
 #  CSV dataset
-  NAME: 'CSV'
-  ROOT: 'Datasets/CSV/video_compressed'
-  TXT_PATH: 'Datasets/Elastic-Matching/elastic_pair_1.0.txt'
-  NUM_CLASS: 45
+  # NAME: 'CSV'
+  # ROOT: 'Datasets/CSV/video_compressed'
+  # TXT_PATH: './Datasets/CSV/test_pairs.txt'
+  # NUM_CLASS: 45
 
 #  COIN dataset
-  # NAME: 'COIN-SV'
-  # # TXT_PATH: './Datasets/COIN-SV/val_pairs.txt'
-  # ROOT: 'Datasets/COIN-SV/video_compressed'
-  # TXT_PATH: './Datasets/COIN-SV/test_pairs.txt'
-  # NUM_CLASS: 37
+  NAME: 'COIN-SV'
+  # TXT_PATH: './Datasets/COIN-SV/val_pairs.txt'
+  ROOT: 'Datasets/COIN-SV/video_compressed'
+  TXT_PATH: './Datasets/COIN-SV/test_pairs.txt'
+  NUM_CLASS: 37
+  LOAD_VIDEO: False
 
 #  Diving48 dataset;
   # NAME: 'DIVING48-SV'

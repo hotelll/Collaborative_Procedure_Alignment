@@ -6,7 +6,7 @@ TRAIN:
   DROPOUT: 0.0
   SEED: 1234
 
-  SAVE_PATH: 'train_logs/diving_logs/adaK_learnGaussStep'
+  SAVE_PATH: 'train_logs/diving_logs/CPA_learnStep'
 
 MODEL:
   BACKBONE: 'cat'

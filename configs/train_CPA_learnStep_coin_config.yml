@@ -6,7 +6,7 @@ TRAIN:
   DROPOUT: 0.0
   SEED: 1234
 
-  SAVE_PATH: 'train_logs/csv_logs/CPA_randomStep'
+  SAVE_PATH: 'train_logs/coin_logs/CPA_learnStep'
 
 MODEL:
   BACKBONE: 'cat'
@@ -19,19 +19,20 @@ MODEL:
 
 DATASET:
   MODE: 'train'
-  LOAD_VIDEO: True
+  
 
 # CSV dataset
-  NAME: 'CSV'
-  ROOT: './Datasets/CSV/video_compressed'
-  TXT_PATH: './Datasets/CSV/train_pairs.txt'
-  NUM_CLASS: 45
+  # NAME: 'CSV'
+  # ROOT: './Datasets/CSV/video_compressed'
+  # TXT_PATH: './Datasets/CSV/train_pairs.txt'
+  # NUM_CLASS: 45
 
 #  COIN dataset
-  # NAME: 'COIN-SV'
-  # ROOT: 'Datasets/COIN-SV/video_compressed'
-  # TXT_PATH: './Datasets/COIN-SV/train_pairs.txt'
-  # NUM_CLASS: 37
+  NAME: 'COIN-SV'
+  ROOT: 'Datasets/COIN-SV/video_compressed'
+  TXT_PATH: './Datasets/COIN-SV/train_pairs.txt'
+  NUM_CLASS: 37
+  LOAD_VIDEO: False
 
 #  Diving dataset
   # NAME: 'DIVING48-SV'
