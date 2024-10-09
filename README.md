@@ -1,4 +1,4 @@
-#  [Collaborative Weakly Supervised Video Correlation Learning for Procedure-Aware Instructional Video Analysis](https://ojs.aaai.org/index.php/AAAI/article/view/27983)
+#  Collaborative Weakly Supervised Video Correlation Learning for Procedure-Aware Instructional Video Analysis
 
 ![Task](assets/task_goal.png)
 
@@ -14,7 +14,7 @@ Tianyao He, Huabin Liu, Yuxi Li, Xiao Ma, Cheng Zhong, Yang Zhang, Weiyao Lin
 ## News
 
 - [2024.10] ⭐️The journal version ***Achieving Procedure-Aware Instructional Video Correlation Learning under Weak Supervision from a Collaborative Perspective*** has been accepted by IJCV!
-- [2023.11]⭐️Our conference paper ***Collaborative Weakly Supervised Video Correlation Learning for Procedure-Aware Instructional Video Analysis*** has been accepted by AAAI 2024!  [[Paper]]([https://arxiv.org/abs/2312.14135](https://ojs.aaai.org/index.php/AAAI/article/view/27983))
+- [2023.11]⭐️Our conference paper ***Collaborative Weakly Supervised Video Correlation Learning for Procedure-Aware Instructional Video Analysis*** has been accepted by AAAI 2024!  [Paper]([https://arxiv.org/abs/2312.14135](https://ojs.aaai.org/index.php/AAAI/article/view/27983))
 
 This repository is the PyTorch implementation of our journal version paper.
 
